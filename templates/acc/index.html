@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block con %}
+    <div class="p-5 mb-2 bg-light rounded-3">
+        <h1 class="display-5 fw-bold">KG Commerce</h1>        
+               
+{% if request.user.is_authenticated %}
+<!-- 인증된 사용자 -->
+        {{ request.user }} 님 !! Have a good day ! <br><br> 
+        <a href="{% url 'acc:profile' %}"><button class="btn btn-dark btn-lg" type="button" style="font-weight: bold;">PROFILE</button></a>
+        <a href="{% url 'acc:logout' %}"><button class="btn btn-dark btn-lg" type="button" style="font-weight: bold;">LOGOUT</button></a>
+
+{% else %}
+<!-- 익명의 사용자 -->        
+        KG Commerce에 오신 것을 환영합니다 ! <br><br>                
+        <a href="{% url 'acc:login' %}"><button class="btn btn-dark btn-lg" type="button" style="font-weight: bold;">LOGIN</button></a>
+        <a href="{% url 'acc:signup' %}"><button class="btn btn-dark btn-lg" type="button" style="font-weight: bold;" >SIGN UP</button></a>
+    
+
+{% endif %}
+    </div>
+    <form>
+        <div class="container">
+            <div class="row"> 
+                <div class="col-lg-3"> <h3 class="display-6 fw-bold"> KG Commerce </h3> 
+                </div>
+                <div class="col-lg-7">
+                    <input type="text" name="kw" value="{{kw}}" class="form-control">
+                </div>
+                <div class="col-lg-2 text-center">
+                    <a href="{% url 'product:index' %}" name="kw" value="{{kw}}"><button class="btn btn-dark" type="button">찾아보기</button></a>
+                </div>
+            </div>
+        </div>    
+    </form>
+{% endblock %}
+    
